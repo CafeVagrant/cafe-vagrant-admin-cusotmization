@@ -1,0 +1,23 @@
+#dashboard-widgets .empty-container {
+    display: none !important;
+}
+
+.hide-if-no-customize {
+    display: none !important;
+}
+
+.inactive-sidebar {
+    display: none! important;
+}
+
+.widget-control-remove {
+    display: none! important;
+}
+
+.extended-widget-opts-form {
+    display: none! important;
+}
+
+#sidebar-5 {
+    display: none! important;
+}

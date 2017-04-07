@@ -1,0 +1,28 @@
+#postcustom {
+    display: none !important;
+}
+
+#formatdiv {
+    display: none;
+}
+
+.et_pb_toggle_builder_wrapper {
+    display: none !important;
+}
+
+#et_settings_meta_box .hndle {
+    background-color: #fff !important;
+    color: #000 !important;
+}
+
+#et_settings_meta_box .hndle:before {
+    display: none;
+}
+
+#et_settings_meta_box .hndle span {
+    display: none;
+}
+
+#et_settings_meta_box .hndle:after {
+    content: "Layout";
+}

@@ -1,7 +1,7 @@
 .welcome-panel {
     padding-left: 5%;
     padding-right: 5%;
-    padding-bottom: 10px;
+    padding-bottom: 23px;
 }
 .welcome-logo {
     text-align: center;
@@ -72,4 +72,62 @@
 
 .additional-services h2  {
   font-weight: 700;
+}
+
+.service-icons .service-row {
+    width: 100%;
+    display: inline-block;
+    padding-top: ;
+}
+
+.service-icons .service {
+    float: left;
+    width: 25%;
+    padding-top: 15px;
+}
+
+.service-icons .service-icon {
+    padding: 10px;
+}
+
+.service-label {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+div.break {
+    clear: both;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.service:hover {
+    color: #2ea3f2;
+}
+
+#side-sortables, .ui-sortable.empty-container {
+    display: none;
+}
+
+#form-message {
+    float: left;
+    font-weight: bold;
+}
+
+@media only screen and ( max-width: 870px ) {
+    
+    .welcome-panel .welcome-panel-column {
+        width: 100%;
+        margin: auto;
+    }
+
+    .welcome-panel .welcome-panel-column li {
+        width: 100%;
+    }
+    
+    .welcome-panel-last h3 {
+        clear: both;
+    }
+
 }

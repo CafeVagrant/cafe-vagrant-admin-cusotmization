@@ -7,17 +7,34 @@
 }
 
 .inactive-sidebar {
-    display: none! important;
+    display: none !important;
 }
 
 .widget-control-remove {
-    display: none! important;
+    display: none !important;
 }
 
 .extended-widget-opts-form {
-    display: none! important;
+    display: none !important;
 }
 
 #sidebar-5 {
-    display: none! important;
+    display: none !important;
+}
+
+.widget-liquid-left {
+    display: none !important;
+}
+
+.widget-liquid-right {
+    float: left !important;
+}
+
+div#widgets-right > div {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+div.widget-liquid-right {
+    width: 100% !important;
 }

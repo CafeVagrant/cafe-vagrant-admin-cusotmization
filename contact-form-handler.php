@@ -5,7 +5,7 @@
         empty($_POST['email']) || 
         empty($_POST['message'])) {
         $errors .= "\n Error: all fields are required";
-    }
+    } 
 
     $name = $_POST['name'];
     $subject = $_POST['subject']; 
@@ -29,6 +29,8 @@
         mail($to,$email_subject,$email_body,$headers);
         //redirect to the 'thank you' page
         //header('Location: contact-form-thank-you.html');
+    }  else {
+        echo $errors;
     }
 
 ?>

@@ -83,7 +83,7 @@
                 </div>
                 <div class="welcome-panel-column welcome-panel-last">
                     <h3><i class="fa fa-medkit" aria-hidden="true"></i> Need Website Assistance?</h3>
-                    <form method="post" name="contact_form" class="contact-form" action="contact-form-handler.php" />
+                    <form method="post" name="contact_form" class="contact-form" action="<?php echo plugins_url('contact-form-handler.php', __FILE__)?>" />
                         <input type="text" name="name" placeholder="Name" required />
                         <input type="text" name="email" placeholder="Email" required />
                         <input type="text" name="subject" class="subject" placeholder="Subject" required />

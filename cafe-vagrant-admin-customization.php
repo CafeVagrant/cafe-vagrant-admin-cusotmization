@@ -82,7 +82,7 @@
                       <div class="welcome-logo">
                            <div class="welcome-panel-logo">
                               <!-- Adds a logo top left-->
-                              <a href="<?php echo site_url(); ?>" target="_blank"><img src="<?php echo get_stylesheet_directory_uri() . "/images/PSECA6.1-blue.png"; ?>"/></a>
+                              <a href="<?php echo site_url(); ?>" target="_blank"><img src="<?php echo get_stylesheet_directory_uri() . "/images/PSEC-blue.png"; ?>"/></a>
                           </div>  
                       </div>
                 </div>

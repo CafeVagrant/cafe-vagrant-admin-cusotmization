@@ -2,6 +2,6 @@
 
 
     $( document ).ready(function(event) {
-        $('.widgets-holder-wrap').removeClass("clased");
+        $('.widgets-holder-wrap').removeClass('closed');
     });
 })(jQuery);

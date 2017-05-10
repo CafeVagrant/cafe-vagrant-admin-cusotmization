@@ -27,6 +27,9 @@
         if($hook == 'post.php' && !current_user_can('be_system_admin')) {
                 wp_enqueue_style( 'custom_wp_admin_css', plugins_url('post-style.css', __FILE__), $in_footer = true );
         }
+        if($hook == 'post-new.php' && !current_user_can('be_system_admin')) {
+                wp_enqueue_style( 'custom_wp_admin_css', plugins_url('post-style.css', __FILE__), $in_footer = true );
+        }
         if($hook == 'widgets.php' && !current_user_can('be_system_admin')) {
                 wp_enqueue_style( 'custom_wp_admin_css', plugins_url('widgets-style.css', __FILE__), $in_footer = true );
         }

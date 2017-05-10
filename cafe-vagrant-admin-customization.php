@@ -9,26 +9,29 @@
  * License: GPL2
  */
 
-    /*function oz_remove_help_tabs( $old_help, $screen_id, $screen ){
-        $screen->remove_help_tabs();
-        return $old_help;
+    function remove_help_tabs( $old_help, $screen_id, $screen ){
+        
+        if(!current_user_can('be_system_admin')) {
+            $screen->remove_help_tabs();
+            return $old_help;
+        }
     }
-    add_filter( 'contextual_help', 'oz_remove_help_tabs', 999, 3 );
-    add_filter( 'screen_options_show_screen', '__return_false' );*/
+    add_filter( 'contextual_help', 'remove_help_tabs', 999, 3 );
+    add_filter( 'screen_options_show_screen', '__return_false' );
 
 
     function enqueue_admin_style($hook) {
         if($hook == 'index.php') {
-                wp_enqueue_style( 'custom_wp_admin_css', plugins_url('dashboard-style.css', __FILE__) );
+                wp_enqueue_style( 'custom_wp_admin_css', plugins_url('dashboard-style.css', __FILE__), $in_footer = true );
         }
         if($hook == 'post.php' && !current_user_can('be_system_admin')) {
-                wp_enqueue_style( 'custom_wp_admin_css', plugins_url('post-style.css', __FILE__) );
+                wp_enqueue_style( 'custom_wp_admin_css', plugins_url('post-style.css', __FILE__), $in_footer = true );
         }
         if($hook == 'widgets.php' && !current_user_can('be_system_admin')) {
-                wp_enqueue_style( 'custom_wp_admin_css', plugins_url('widgets-style.css', __FILE__) );
+                wp_enqueue_style( 'custom_wp_admin_css', plugins_url('widgets-style.css', __FILE__), $in_footer = true );
         }
         if($hook == 'nav-menus.php' && !current_user_can('be_system_admin')) {
-                wp_enqueue_style( 'custom_wp_admin_css', plugins_url('menu-style.css', __FILE__) );
+                wp_enqueue_style( 'custom_wp_admin_css', plugins_url('menus-style.css', __FILE__), $in_footer = true );
         }
             
     }
@@ -39,8 +42,8 @@
             wp_enqueue_script( 'font-awesome', 'https://use.fontawesome.com/ed613b336c.js', $in_footer = true );
             wp_enqueue_script( 'dashboard-custom-script', plugins_url('dashboard-scripts.js',__FILE__ ), $in_footer = true );
         }
-        if($hook == 'widgets.php') {
-            wp_enqueue_script( 'dashboard-custom-script', plugins_url('dashboard-scripts.js',__FILE__ ), $in_footer = true );
+        if($hook == 'widgets.php' && !current_user_can('be_system_admin')) {
+            wp_enqueue_script( 'dashboard-custom-script', plugins_url('widgets-scripts.js',__FILE__ ), $in_footer = true );
         }
     }
     add_action( 'admin_enqueue_scripts', 'enqueue_admin_js');
@@ -49,7 +52,6 @@
     // Custom Admin footer
     function wpexplorer_remove_footer_admin () {
         
-        //echo '<pre>' . print_r(get_current_screen()->id, true) . '</pre>';
         if(!current_user_can('be_system_admin')) {
             echo '<span id="footer-thankyou">This site is built by <a href="http://www.cafevagrant.com/" target="_blank">Cafe Vagrant</a>. For help contact <a href="mailto:info@cafevagrant.com</span>" target="_blank">info@cafevagrant.com</span>';
         
@@ -85,12 +87,12 @@
                     <h4><?php _e( "Let's Get Started" ); ?></h4>
                     <ul>
                         <li><?php printf( '<a href="%s" class="welcome-icon welcome-view-site">' . __( 'View your site' ) . '</a>', home_url( '/' ) ); ?></li>
+                        <li><?php printf( '<a href="%s" class="welcome-icon welcome-learn-more">' . __( 'Read the tutorials' ) . '</a>', __( 'http://bit.ly/psec-wp-tutorial' ) ); ?></li>
                         <li><?php printf( '<a href="%s" class="welcome-icon welcome-edit-page">' . __( 'Edit your front page' ) . '</a>', admin_url( 'widgets.php' ) ); ?></li>
-                        <li><?php printf( '<a href="%s" class="welcome-icon welcome-widgets-menus">' . __( 'Customize menus' ) . '</a>', admin_url( 'nav-menus.php' ) ); ?></li>
                     </ul>
                     <ul>
+                        <li><?php printf( '<a href="%s" class="welcome-icon welcome-widgets-menus">' . __( 'Customize menus' ) . '</a>', admin_url( 'nav-menus.php' ) ); ?></li>
                         <li><?php printf( '<a href="%s" class="welcome-icon dashicons-chart-area">' . __( 'View Google Analytics' ) . '</a>', __( 'https://analytics.google.com' ) ); ?></li>
-                        <li><?php printf( '<a href="%s" class="welcome-icon welcome-learn-more">' . __( 'Read the tutorials' ) . '</a>', __( 'http://codex.wordpress.org/First_Steps_With_WordPress' ) ); ?></li>
                     </ul>
                 </div>
                 <div class="welcome-panel-column welcome-panel-last">

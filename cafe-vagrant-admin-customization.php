@@ -36,9 +36,20 @@
         if($hook == 'nav-menus.php' && !current_user_can('be_system_admin')) {
                 wp_enqueue_style( 'custom_wp_admin_css', plugins_url('menus-style.css', __FILE__), $in_footer = true );
         }
+
             
     }
     add_action( 'admin_enqueue_scripts', 'enqueue_admin_style' );
+
+    add_action('admin_head', 'custom_admin_styles');
+
+    function custom_admin_styles() {
+      echo '<style>
+        #wp-admin-bar-new-content {
+            display: none !important;
+        }
+      </style>';
+    }
 
     function enqueue_admin_js($hook) {
         if($hook == 'index.php') {

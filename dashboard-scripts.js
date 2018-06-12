@@ -8,8 +8,6 @@
     $( document ).ready(function(event) {
         $('#welcome-panel').removeClass("hidden");
 
-
-
         var $form = $('.contact-form');
         $form.submit(function(){
 

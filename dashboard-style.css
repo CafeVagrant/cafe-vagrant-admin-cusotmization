@@ -106,10 +106,6 @@ div.break {
     color: #2ea3f2;
 }
 
-#side-sortables, .ui-sortable.empty-container {
-    display: none;
-}
-
 #form-message {
     float: left;
     font-weight: bold;

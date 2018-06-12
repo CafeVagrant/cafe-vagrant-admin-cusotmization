@@ -11,65 +11,34 @@
 
     function remove_help_tabs( $old_help, $screen_id, $screen ){
         
-        if(!current_user_can('be_system_admin')) {
+        if(!current_user_can('remove_users') && $hook == 'index.php') {
             $screen->remove_help_tabs();
             return $old_help;
         }
     }
     add_filter( 'contextual_help', 'remove_help_tabs', 999, 3 );
-    add_filter( 'screen_options_show_screen', '__return_false' );
-
 
     function enqueue_admin_style($hook) {
         if($hook == 'index.php') {
                 wp_enqueue_style( 'custom_wp_admin_css', plugins_url('dashboard-style.css', __FILE__), $in_footer = true );
-        }
-        if($hook == 'post.php' && !current_user_can('be_system_admin')) {
-                wp_enqueue_style( 'custom_wp_admin_css', plugins_url('post-style.css', __FILE__), $in_footer = true );
-        }
-        if($hook == 'post-new.php' && !current_user_can('be_system_admin')) {
-                wp_enqueue_style( 'custom_wp_admin_css', plugins_url('post-style.css', __FILE__), $in_footer = true );
-        }
-        if($hook == 'widgets.php' && !current_user_can('be_system_admin')) {
-                wp_enqueue_style( 'custom_wp_admin_css', plugins_url('widgets-style.css', __FILE__), $in_footer = true );
-        }
-        if($hook == 'nav-menus.php' && !current_user_can('be_system_admin')) {
-                wp_enqueue_style( 'custom_wp_admin_css', plugins_url('menus-style.css', __FILE__), $in_footer = true );
-        }
-
-            
+        } 
     }
     add_action( 'admin_enqueue_scripts', 'enqueue_admin_style' );
 
-    add_action('admin_head', 'custom_admin_styles');
-
-    function custom_admin_styles() {
-      echo '<style>
-        #wp-admin-bar-new-content {
-            display: none !important;
-        }
-      </style>';
-    }
 
     function enqueue_admin_js($hook) {
         if($hook == 'index.php') {
             wp_enqueue_script( 'font-awesome', 'https://use.fontawesome.com/ed613b336c.js', $in_footer = true );
             wp_enqueue_script( 'dashboard-custom-script', plugins_url('dashboard-scripts.js',__FILE__ ), $in_footer = true );
         }
-        if($hook == 'widgets.php' && !current_user_can('be_system_admin')) {
-            wp_enqueue_script( 'dashboard-custom-script', plugins_url('widgets-scripts.js',__FILE__ ), $in_footer = true );
-        }
     }
     add_action( 'admin_enqueue_scripts', 'enqueue_admin_js');
 
 
     // Custom Admin footer
-    function wpexplorer_remove_footer_admin () {
-        
-        if(!current_user_can('be_system_admin')) {
+    function wpexplorer_remove_footer_admin () { 
             echo '<span id="footer-thankyou">This site is built by <a href="http://www.cafevagrant.com/" target="_blank">Cafe Vagrant</a>. For help contact <a href="mailto:info@cafevagrant.com</span>" target="_blank">info@cafevagrant.com</span>';
         
-        }
     }
     add_filter( 'admin_footer_text', 'wpexplorer_remove_footer_admin' );
 
